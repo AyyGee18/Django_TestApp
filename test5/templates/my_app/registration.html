@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'my_app/base.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  {% block body_block %}
+  <div>
+    {% if registered %}
+    <h1>Thank you for regsistration!</h1>
+    {% else %}
+    <h1>Register here!</h1>
+    <h3>Fill out the form</h3>
+
+    <form enctype="multipart/form-data" method="post">
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      {% csrf_token %}
+      <input type="submit" name="" id="Register">
+    </form>
+
+    {% endif %}
+  </div>
+  {% endblock %}
+</body>
+
+</html>
